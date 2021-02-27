@@ -10,7 +10,7 @@ int main()
 int grade;
 cout<< "Enter a score in integer(0-100): ";
 cin>>grade;
- get_letter_grade_using_if(grade);
+ 
 
 {
 	std::string letter_grade;
@@ -41,10 +41,32 @@ cin>>grade;
     {
         letter_grade = "Out of range";
     }
-    return letter_grade;
-	
+    
     
 }
+ std::string letter_grade;
+    switch (grade / 10)
+    {
+        case 10 : case 9:
+        letter_grade = "A";
+        break;
+        case 8:
+        letter_grade = "B";
+        break;
+        case 7:
+        letter_grade = "C";
+        break;
+        case 6:
+        letter_grade = "D";
+        break;
+        case 5: case 4: case 3: case 2: case 1:
+        letter_grade = "F";
+        break;
+        default:
+        letter_grade = "Out of range";
+
+
+    }
 	return 0;
 }
 
