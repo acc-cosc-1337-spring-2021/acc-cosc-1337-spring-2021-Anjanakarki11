@@ -45,7 +45,7 @@ int main()
 		
 	} 
 	
-	while (continue_ == 'y' || continue_ == 'Y'); 
+	while (continue_ == 'y' || continue_ == 'Y');
 	
 
 	return 0;
