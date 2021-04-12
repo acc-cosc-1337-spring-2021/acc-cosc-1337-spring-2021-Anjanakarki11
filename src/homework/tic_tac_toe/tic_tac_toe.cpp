@@ -57,6 +57,7 @@ void tic_tac_toe::start_game(string first_player)
     if (first_player == "X" || first_player == "O")
     {
         player = first_player;
+        clear_board();
     }
 }
 void tic_tac_toe::clear_board()
@@ -71,5 +72,78 @@ void tic_tac_toe::clear_board()
 }
 bool tic_tac_toe::game_over()
 {
-    return check_board_full();
+    
+    if (check_row_win() || check_column_win() || check_diagonal_win())
+    {
+         set_winner();
+         return true;
+
+
+    }
+    else if (check_board_full())
+    {
+        winner = "C";
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool tic_tac_toe::check_row_win()
+{
+    bool win = false;
+    
+    
+        if ((pegs[0] == pegs[1] && pegs[0] == pegs[2]  && pegs[0] != " " )
+        || (pegs[3] == pegs[4] && pegs[3] == pegs[5]  && pegs[3] != " ")
+        || (pegs[6] == pegs[7] && pegs[6] == pegs[8]  && pegs[6] != " "))
+        {
+            win = true;
+        }
+    return win;
+
+}
+
+bool tic_tac_toe::check_column_win()
+{
+    bool win = false;
+    
+    
+        if ((pegs[0] == pegs[3] && pegs[0] == pegs[6] && pegs[0] != " ")
+        || (pegs[1] == pegs[4] && pegs[1] == pegs[7] && pegs[1] != " ")
+        || (pegs[2] == pegs[5] && pegs[2] == pegs[8] && pegs[2] != " "))
+        {
+            win = true;
+        }
+    return win;
+
+}
+bool tic_tac_toe::check_diagonal_win()
+{
+    bool win = false;
+    
+    
+        if ((pegs[0] == pegs[4] && pegs[0] == pegs[8]  && pegs[4] != " ") 
+        || (pegs[2] == pegs[4] && pegs[2] == pegs[6]  && pegs[4] != " "))
+       
+        {
+            win = true;
+        }
+
+   return win; 
+
+}
+void tic_tac_toe::set_winner()
+{
+    if (player == "X")
+    {
+        winner = "O";
+
+    }
+    else
+    {
+        winner = "X";
+    }
 }
