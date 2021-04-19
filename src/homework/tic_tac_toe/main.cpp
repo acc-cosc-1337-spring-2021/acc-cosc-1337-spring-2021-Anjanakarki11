@@ -1,4 +1,5 @@
-#include "tic_tac_toe.h";
+#include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -8,13 +9,13 @@ using std::cout; using std::cin;
 int main() 
 
 {
+	int a = 0;
+	int b = 0;
+	int c = 0;
 	string choice;
 	tic_tac_toe game1;
-	//cout<<"Which player do you want X or O? \n";
-	//cin>>choice;
-	//game1.start_game(choice);
-	
-	int position_chosen;
+	tic_tac_toe_manager manager;
+		
 	string continue_ = "y";
 	while (continue_ == "y")
 	{
@@ -27,17 +28,18 @@ int main()
 		while(game1.game_over() == false)
 		{
 			
-			cout<<"Which position do you want to choose? \n";
-			cin>>position_chosen;
-			
-			game1.mark_board(position_chosen);
-			game1.display_board();
-			game1.game_over();
+			cin>>game1;
+			cout<<game1;
 		}
+		manager.save_game(game1);
 		cout<<"The winner is "<<game1.get_winner();
-		cout<<"\n Do you want to continue the game(y/n)?: ";
+
+		cout<<"\n Do you want to continue the game(y/n)?: \n";
 		cin>>continue_;
 
 	}
+	manager.get_winner_total(a,b,c);
+	cout<<"X wins: "<<b<<"\n"<<"O wins: "<<a<<"\n"<<"Ties: "<<c;
+	
 	return 0;
 }

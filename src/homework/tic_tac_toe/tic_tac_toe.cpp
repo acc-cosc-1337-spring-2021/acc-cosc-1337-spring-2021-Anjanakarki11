@@ -5,18 +5,18 @@ using std::cout;
 using namespace std;
 
 
-void tic_tac_toe::display_board()const 
+//void tic_tac_toe::display_board()const 
 
-{
-   for(int i = 0; i<=8;i++)
-   {
-       cout<<pegs[i];
-       if ((i+1) % 3 == 0)
-       {
-           cout<<"\n";
-       }
-   }
-}
+//{
+   //for(int i = 0; i<=8;i++)
+   //{
+       //cout<<pegs[i];
+       //if ((i+1) % 3 == 0)
+       //{
+           //cout<<"\n";
+       //}
+   //}
+//}
 
 
 void tic_tac_toe::mark_board(int position)
@@ -147,3 +147,27 @@ void tic_tac_toe::set_winner()
         winner = "X";
     }
 }
+std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game1)
+{
+    for(int i = 0; i<=8;i++)
+   {
+       out<<game1.pegs[i];
+       if ((i+1) % 3 == 0)
+       {
+           out<<"\n";
+       }
+   }
+    return out;
+
+}
+std::istream& operator>>(std::istream& in, tic_tac_toe& game1)
+{
+    int position_chosen;
+    cout<<"Which position do you want to choose? \n";
+	in>>position_chosen;
+			
+	game1.mark_board(position_chosen);
+    
+    return in;
+}
+
