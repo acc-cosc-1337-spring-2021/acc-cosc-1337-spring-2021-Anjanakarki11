@@ -5,17 +5,19 @@
 using std::cout;
 using namespace std;
 
-void tic_tac_toe_manager::save_game(tic_tac_toe b)
+void tic_tac_toe_manager::save_game(std::unique_ptr<tic_tac_toe>& b)
 {
-    games.push_back(b);
-    update_winner_count(b.get_winner());
+    //games.push_back(std::move(b));
+    update_winner_count(b->get_winner());
+    games.push_back(std::move(b));
 }
 std::ostream& operator<<(std::ostream& out, const tic_tac_toe_manager& manager)
 {
     //int i;
-    for( size_t i = 0; i<= manager.games.size(); ++i)
+    for( auto& game1 : manager.games)
     {
-        cout<<manager.games[i]<<"\n";
+        out<<*game1;
+        out<<"\n";
     }
     return out;
 

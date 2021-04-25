@@ -1,6 +1,7 @@
 //cpp
 #include "tic_tac_toe.h"
 #include<iostream>
+#include<cmath>
 using std::cout;
 using namespace std;
 
@@ -149,10 +150,11 @@ void tic_tac_toe::set_winner()
 }
 std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game1)
 {
-    for(int i = 0; i<=8;i++)
+    int board_size = sqrt(game1.pegs.size());
+    for(int i = 0; i <= game1.pegs.size()-1; i++)
    {
        out<<game1.pegs[i];
-       if ((i+1) % 3 == 0)
+       if ((i+1) % board_size == 0)
        {
            out<<"\n";
        }
