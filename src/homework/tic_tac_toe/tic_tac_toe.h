@@ -11,6 +11,8 @@ class tic_tac_toe
 {
 public:
     //void display_board()const ;
+    tic_tac_toe(){};
+    tic_tac_toe(int size) : pegs(size*size, " "){};
     void mark_board(int position);
     void start_game(string first_player);
     void get_player();
@@ -21,15 +23,23 @@ public:
 
 private:
     //vector<string>pegs;
-    vector<string> pegs = {" "," "," "," "," "," "," "," "," ",};
+   // vector<string> pegs = {" "," "," "," "," "," "," "," "," ",};
     string player;
     void clear_board();
     bool check_board_full();
     void set_next_player();
-    bool check_column_win();
-    bool check_row_win();
-    bool check_diagonal_win();
+    //bool check_column_win();
+   // bool check_row_win();
+    //bool check_diagonal_win();
     void set_winner();
     string winner;
+
+protected:
+    vector<std::string> pegs{9, " "};
+    virtual bool check_column_win();
+    virtual bool check_row_win();
+    virtual bool check_diagonal_win();
+
+
 };
 #endif
